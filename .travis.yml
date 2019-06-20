@@ -3,9 +3,12 @@ node_js:
   - 'stable'
 cache:
   directories:
-    -node_modules
-  script:
-    - npm test
-    - npm run build
+    - node_modules
+jobs:
+  include:
+    - stage: test
+      script: yarn test
+    - stage: build
+      script: yarn build
 on:
   branch: master
